@@ -1,12 +1,11 @@
 """ Training and testing of the model
 """
 import os
-from re import I
 import numpy as np
 from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
 import torch
 import torch.nn.functional as F
-from model import MMDynamic
+from model import HTML
 import random
 
 cuda = True if torch.cuda.is_available() else False
@@ -158,7 +157,7 @@ def train(data_folder, modelpath, testonly,uni,dual,triple):
     labels_tr_tensor = labels_tr_tensor.cuda()
     onehot_labels_tr_tensor = onehot_labels_tr_tensor.cuda()
     dim_list = [x.shape[1] for x in data_tr_list]
-    model = MMDynamic(dim_list, hidden_dim, num_class, dropout=0.5)
+    model = HTML(dim_list, hidden_dim, num_class, dropout=0.5)
     model.cuda()
     optimizer = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=1e-4)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=150, eta_min=0)
