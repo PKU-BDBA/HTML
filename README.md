@@ -40,7 +40,7 @@ If you want to change the number of input modalities, you can change the "uni_mo
 python main.py -uni_modality True -dual_modality False triple_modality False
 ```
 
-If you want to change the hyper-parameters in the model, you can edit the train_test.py.
+If you want to change the hyper-parameters in the model, you can edit the `train_test.py`.
 
 
 ## Citation
